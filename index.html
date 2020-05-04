@@ -16,8 +16,21 @@
         const nodeArray = new Array();
         const linkSources = new Array();
         const linkDestinations = new Array();
+        const colorGroup = new Array();
+        const names = new Array();
         for (var k in data.Nodes){
             nodeArray[k] = data.Nodes[k].Index;
+            names[k] = nodeArray[k] + " (" + data.Nodes[k].Position.X + ", " + data.Nodes[k].Position.Y + ", " + data.Nodes[k].Position.Z + ")";
+            console.log(names[k]);
+            if (k == 0){
+                colorGroup[k] = 1;
+            }
+            else if (k = data.Nodes.length-1){
+                colorGroup[k] = 2;
+            }
+            else {
+                colorGroup[k] = 3;
+            }
         }
         for (var k in data.Edges){
             linkSources[k] = data.Edges[k].Source;
@@ -27,18 +40,16 @@
         console.log(linkSources);
         console.log(linkDestinations);
         const gData = {
-            //nodes: [{id: 0}, {id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}],
-            //nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i]})),
-            //links: [{"source":0, "target":1},{"source":0, "target":2},{"source":0, "target":3},{"source":0, "target":4},{"source":0, "target":5},{"source":0, "target":6},{"source":0, "target":7},{"source":0, "target":8},{"source":0, "target":9},{"source":0, "target":10},{"source":0, "target":11},{"source":0, "target":12},{"source":0, "target":13}]
-           // links: [...data.links.keys()].map(i => ({source: }))
-            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i]})),
+            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i]})),
             links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i]}))
 
         };
         console.log(gData);
         const Graph = ForceGraph3D()
         (document.getElementById('3d-graph'))
-            .graphData(gData);
+            .graphData(gData)
+            .nodeLabel('name')
+            .nodeAutoColorBy('group');
 
     }
     getISS();
