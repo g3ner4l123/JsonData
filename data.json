@@ -1,656 +1,521 @@
 {
-  "Size":1,
-  "EdgeSize":3,
-  "Nodes":[
+  "nodes":[
     {
-      "Index":0,
-      "Position":{
-        "X":0,
-        "Y":0,
-        "Z":0
-      }
+      "id":0
+
     },
     {
-      "Index":1,
-      "Position":{
-        "X":0,
-        "Y":0,
-        "Z":1
-      }
+      "id":1
     },
     {
-      "Index":2,
-      "Position":{
-        "X":0,
-        "Y":0,
-        "Z":2
-      }
+      "id":2
     },
     {
-      "Index":3,
-      "Position":{
-        "X":0,
-        "Y":1,
-        "Z":0
-      }
+      "id":3
     },
     {
-      "Index":4,
-      "Position":{
-        "X":0,
-        "Y":1,
-        "Z":1
-      }
+      "id":4
     },
     {
-      "Index":5,
-      "Position":{
-        "X":0,
-        "Y":1,
-        "Z":2
-      }
+      "id":5
     },
     {
-      "Index":6,
-      "Position":{
-        "X":0,
-        "Y":2,
-        "Z":0
-      }
+      "id":6
     },
     {
-      "Index":7,
-      "Position":{
-        "X":0,
-        "Y":2,
-        "Z":1
-      }
+      "id":7
     },
     {
-      "Index":8,
-      "Position":{
-        "X":0,
-        "Y":2,
-        "Z":2
-      }
+      "id":8
     },
     {
-      "Index":9,
-      "Position":{
-        "X":1,
-        "Y":0,
-        "Z":0
-      }
+      "id":9
     },
     {
-      "Index":10,
-      "Position":{
-        "X":1,
-        "Y":0,
-        "Z":1
-      }
+      "id":10
     },
     {
-      "Index":11,
-      "Position":{
-        "X":1,
-        "Y":0,
-        "Z":2
-      }
+      "id":11
     },
     {
-      "Index":12,
-      "Position":{
-        "X":1,
-        "Y":1,
-        "Z":0
-      }
+      "id":12
     },
     {
-      "Index":13,
-      "Position":{
-        "X":1,
-        "Y":1,
-        "Z":1
-      }
+      "id":13
     },
     {
-      "Index":14,
-      "Position":{
-        "X":1,
-        "Y":1,
-        "Z":2
-      }
+      "id":14
     },
     {
-      "Index":15,
-      "Position":{
-        "X":1,
-        "Y":2,
-        "Z":0
-      }
+      "id":15
     },
     {
-      "Index":16,
-      "Position":{
-        "X":1,
-        "Y":2,
-        "Z":1
-      }
+      "id":16
     },
     {
-      "Index":17,
-      "Position":{
-        "X":1,
-        "Y":2,
-        "Z":2
-      }
+      "id":17
     },
     {
-      "Index":18,
-      "Position":{
-        "X":2,
-        "Y":0,
-        "Z":0
-      }
+      "id":18
     },
     {
-      "Index":19,
-      "Position":{
-        "X":2,
-        "Y":0,
-        "Z":1
-      }
+      "id":19
     },
     {
-      "Index":20,
-      "Position":{
-        "X":2,
-        "Y":0,
-        "Z":2
-      }
+      "id": 20
     },
     {
-      "Index":21,
-      "Position":{
-        "X":2,
-        "Y":1,
-        "Z":0
-      }
+      "id":21
     },
     {
-      "Index":22,
-      "Position":{
-        "X":2,
-        "Y":1,
-        "Z":1
-      }
+      "id":22
     },
     {
-      "Index":23,
-      "Position":{
-        "X":2,
-        "Y":1,
-        "Z":2
-      }
+      "id":23
     },
     {
-      "Index":24,
-      "Position":{
-        "X":2,
-        "Y":2,
-        "Z":0
-      }
+      "id":24
     },
     {
-      "Index":25,
-      "Position":{
-        "X":2,
-        "Y":2,
-        "Z":1
-      }
+      "id":25
+
     },
     {
-      "Index":26,
-      "Position":{
-        "X":2,
-        "Y":2,
-        "Z":2
-      }
+      "id": 26
     }
   ],
-  "Edges":[
+  "links":[
     {
-      "Source":0,
-      "Destination":9
+      "source":0,
+      "target":9
     },
     {
-      "Source":0,
-      "Destination":3
+      "source":0,
+      "target":3
     },
     {
-      "Source":0,
-      "Destination":1
+      "source":0,
+      "target":1
     },
     {
-      "Source":1,
-      "Destination":10
+      "source":1,
+      "target":10
     },
     {
-      "Source":1,
-      "Destination":4
+      "source":1,
+      "target":4
     },
     {
-      "Source":1,
-      "Destination":0
+      "source":1,
+      "target":0
     },
     {
-      "Source":1,
-      "Destination":2
+      "source":1,
+      "target":2
     },
     {
-      "Source":2,
-      "Destination":11
+      "source":2,
+      "target":11
     },
     {
-      "Source":2,
-      "Destination":5
+      "source":2,
+      "target":5
     },
     {
-      "Source":2,
-      "Destination":1
+      "source":2,
+      "target":1
     },
     {
-      "Source":3,
-      "Destination":12
+      "source":3,
+      "target":12
     },
     {
-      "Source":3,
-      "Destination":0
+      "source":3,
+      "target":0
     },
     {
-      "Source":3,
-      "Destination":6
+      "source":3,
+      "target":6
     },
     {
-      "Source":3,
-      "Destination":4
+      "source":3,
+      "target":4
     },
     {
-      "Source":4,
-      "Destination":13
+      "source":4,
+      "target":13
     },
     {
-      "Source":4,
-      "Destination":1
+      "source":4,
+      "target":1
     },
     {
-      "Source":4,
-      "Destination":7
+      "source":4,
+      "target":7
     },
     {
-      "Source":4,
-      "Destination":3
+      "source":4,
+      "target":3
     },
     {
-      "Source":4,
-      "Destination":5
+      "source":4,
+      "target":5
     },
     {
-      "Source":5,
-      "Destination":14
+      "source":5,
+      "target":14
     },
     {
-      "Source":5,
-      "Destination":2
+      "source":5,
+      "target":2
     },
     {
-      "Source":5,
-      "Destination":8
+      "source":5,
+      "target":8
     },
     {
-      "Source":5,
-      "Destination":4
+      "source":5,
+      "target":4
     },
     {
-      "Source":6,
-      "Destination":15
+      "source":6,
+      "target":15
     },
     {
-      "Source":6,
-      "Destination":3
+      "source":6,
+      "target":3
     },
     {
-      "Source":6,
-      "Destination":7
+      "source":6,
+      "target":7
     },
     {
-      "Source":7,
-      "Destination":16
+      "source":7,
+      "target":16
     },
     {
-      "Source":7,
-      "Destination":4
+      "source":7,
+      "target":4
     },
     {
-      "Source":7,
-      "Destination":6
+      "source":7,
+      "target":6
     },
     {
-      "Source":7,
-      "Destination":8
+      "source":7,
+      "target":8
     },
     {
-      "Source":8,
-      "Destination":17
+      "source":8,
+      "target":17
     },
     {
-      "Source":8,
-      "Destination":5
+      "source":8,
+      "target":5
     },
     {
-      "Source":8,
-      "Destination":7
+      "source":8,
+      "target":7
     },
     {
-      "Source":9,
-      "Destination":0
+      "source":9,
+      "target":0
     },
     {
-      "Source":9,
-      "Destination":18
+      "source":9,
+      "target":18
     },
     {
-      "Source":9,
-      "Destination":12
+      "source":9,
+      "target":12
     },
     {
-      "Source":9,
-      "Destination":10
+      "source":9,
+      "target":10
     },
     {
-      "Source":10,
-      "Destination":1
+      "source":10,
+      "target":1
     },
     {
-      "Source":10,
-      "Destination":19
+      "source":10,
+      "target":19
     },
     {
-      "Source":10,
-      "Destination":13
+      "source":10,
+      "target":13
     },
     {
-      "Source":10,
-      "Destination":9
+      "source":10,
+      "target":9
     },
     {
-      "Source":10,
-      "Destination":11
+      "source":10,
+      "target":11
     },
     {
-      "Source":11,
-      "Destination":2
+      "source":11,
+      "target":2
     },
     {
-      "Source":11,
-      "Destination":20
+      "source":11,
+      "target":20
     },
     {
-      "Source":11,
-      "Destination":14
+      "source":11,
+      "target":14
     },
     {
-      "Source":11,
-      "Destination":10
+      "source":11,
+      "target":10
     },
     {
-      "Source":12,
-      "Destination":3
+      "source":12,
+      "target":3
     },
     {
-      "Source":12,
-      "Destination":21
+      "source":12,
+      "target":21
     },
     {
-      "Source":12,
-      "Destination":9
+      "source":12,
+      "target":9
     },
     {
-      "Source":12,
-      "Destination":15
+      "source":12,
+      "target":15
     },
     {
-      "Source":12,
-      "Destination":13
+      "source":12,
+      "target":13
     },
     {
-      "Source":13,
-      "Destination":4
+      "source":13,
+      "target":4
     },
     {
-      "Source":13,
-      "Destination":22
+      "source":13,
+      "target":22
     },
     {
-      "Source":13,
-      "Destination":10
+      "source":13,
+      "target":10
     },
     {
-      "Source":13,
-      "Destination":16
+      "source":13,
+      "target":16
     },
     {
-      "Source":13,
-      "Destination":12
+      "source":13,
+      "target":12
     },
     {
-      "Source":13,
-      "Destination":14
+      "source":13,
+      "target":14
     },
     {
-      "Source":14,
-      "Destination":5
+      "source":14,
+      "target":5
     },
     {
-      "Source":14,
-      "Destination":23
+      "source":14,
+      "target":23
     },
     {
-      "Source":14,
-      "Destination":11
+      "source":14,
+      "target":11
     },
     {
-      "Source":14,
-      "Destination":17
+      "source":14,
+      "target":17
     },
     {
-      "Source":14,
-      "Destination":13
+      "source":14,
+      "target":13
     },
     {
-      "Source":15,
-      "Destination":6
+      "source":15,
+      "target":6
     },
     {
-      "Source":15,
-      "Destination":24
+      "source":15,
+      "target":24
     },
     {
-      "Source":15,
-      "Destination":12
+      "source":15,
+      "target":12
     },
     {
-      "Source":15,
-      "Destination":16
+      "source":15,
+      "target":16
     },
     {
-      "Source":16,
-      "Destination":7
+      "source":16,
+      "target":7
     },
     {
-      "Source":16,
-      "Destination":25
+      "source":16,
+      "target":25
     },
     {
-      "Source":16,
-      "Destination":13
+      "source":16,
+      "target":13
     },
     {
-      "Source":16,
-      "Destination":15
+      "source":16,
+      "target":15
     },
     {
-      "Source":16,
-      "Destination":17
+      "source":16,
+      "target":17
     },
     {
-      "Source":17,
-      "Destination":8
+      "source":17,
+      "target":8
     },
     {
-      "Source":17,
-      "Destination":26
+      "source":17,
+      "target":26
     },
     {
-      "Source":17,
-      "Destination":14
+      "source":17,
+      "target":14
     },
     {
-      "Source":17,
-      "Destination":16
+      "source":17,
+      "target":16
     },
     {
-      "Source":18,
-      "Destination":9
+      "source":18,
+      "target":9
     },
     {
-      "Source":18,
-      "Destination":21
+      "source":18,
+      "target":21
     },
     {
-      "Source":18,
-      "Destination":19
+      "source":18,
+      "target":19
     },
     {
-      "Source":19,
-      "Destination":10
+      "source":19,
+      "target":10
     },
     {
-      "Source":19,
-      "Destination":22
+      "source":19,
+      "target":22
     },
     {
-      "Source":19,
-      "Destination":18
+      "source":19,
+      "target":18
     },
     {
-      "Source":19,
-      "Destination":20
+      "source":19,
+      "target":20
     },
     {
-      "Source":20,
-      "Destination":11
+      "source":20,
+      "target":11
     },
     {
-      "Source":20,
-      "Destination":23
+      "source":20,
+      "target":23
     },
     {
-      "Source":20,
-      "Destination":19
+      "source":20,
+      "target":19
     },
     {
-      "Source":21,
-      "Destination":12
+      "source":21,
+      "target":12
     },
     {
-      "Source":21,
-      "Destination":18
+      "source":21,
+      "target":18
     },
     {
-      "Source":21,
-      "Destination":24
+      "source":21,
+      "target":24
     },
     {
-      "Source":21,
-      "Destination":22
+      "source":21,
+      "target":22
     },
     {
-      "Source":22,
-      "Destination":13
+      "source":22,
+      "target":13
     },
     {
-      "Source":22,
-      "Destination":19
+      "source":22,
+      "target":19
     },
     {
-      "Source":22,
-      "Destination":25
+      "source":22,
+      "target":25
     },
     {
-      "Source":22,
-      "Destination":21
+      "source":22,
+      "target":21
     },
     {
-      "Source":22,
-      "Destination":23
+      "source":22,
+      "target":23
     },
     {
-      "Source":23,
-      "Destination":14
+      "source":23,
+      "target":14
     },
     {
-      "Source":23,
-      "Destination":20
+      "source":23,
+      "target":20
     },
     {
-      "Source":23,
-      "Destination":26
+      "source":23,
+      "target":26
     },
     {
-      "Source":23,
-      "Destination":22
+      "source":23,
+      "target":22
     },
     {
-      "Source":24,
-      "Destination":15
+      "source":24,
+      "target":15
     },
     {
-      "Source":24,
-      "Destination":21
+      "source":24,
+      "target":21
     },
     {
-      "Source":24,
-      "Destination":25
+      "source":24,
+      "target":25
     },
     {
-      "Source":25,
-      "Destination":16
+      "source":25,
+      "target":16
     },
     {
-      "Source":25,
-      "Destination":22
+      "source":25,
+      "target":22
     },
     {
-      "Source":25,
-      "Destination":24
+      "source":25,
+      "target":24
     },
     {
-      "Source":25,
-      "Destination":26
+      "source":25,
+      "target":26
     },
     {
-      "Source":26,
-      "Destination":17
+      "source":26,
+      "target":17
     },
     {
-      "Source":26,
-      "Destination":23
+      "source":26,
+      "target":23
     },
     {
-      "Source":26,
-      "Destination":25
+      "source":26,
+      "target":25
     }
   ]
 }
