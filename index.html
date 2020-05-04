@@ -1,0 +1,46 @@
+<head>
+    <style> body { margin: 0; } </style>
+    <script src="//unpkg.com/3d-force-graph"></script>
+</head>
+
+<body>
+<div id="3d-graph"></div>
+
+<script>
+    const api_url = 'https://raw.githubusercontent.com/ob-algdatii-20ss/leistungsnachweis-adventure-time/develop/mockData.json?token=AKOYABHCA3CCVL2XKTZ2OLC6XEFMW';
+    async function getISS() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        console.log(data.Nodes);
+        console.log(data.Edges);
+        const nodeArray = new Array();
+        const linkSources = new Array();
+        const linkDestinations = new Array();
+        for (var k in data.Nodes){
+            nodeArray[k] = data.Nodes[k].Index;
+        }
+        for (var k in data.Edges){
+            linkSources[k] = data.Edges[k].Source;
+            linkDestinations[k] = data.Edges[k].Destination;
+        }
+        console.log(nodeArray);
+        console.log(linkSources);
+        console.log(linkDestinations);
+        const gData = {
+            //nodes: [{id: 0}, {id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}],
+            //nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i]})),
+            //links: [{"source":0, "target":1},{"source":0, "target":2},{"source":0, "target":3},{"source":0, "target":4},{"source":0, "target":5},{"source":0, "target":6},{"source":0, "target":7},{"source":0, "target":8},{"source":0, "target":9},{"source":0, "target":10},{"source":0, "target":11},{"source":0, "target":12},{"source":0, "target":13}]
+           // links: [...data.links.keys()].map(i => ({source: }))
+            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i]})),
+            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i]}))
+
+        };
+        console.log(gData);
+        const Graph = ForceGraph3D()
+        (document.getElementById('3d-graph'))
+            .graphData(gData);
+
+    }
+    getISS();
+</script>
+</body>
