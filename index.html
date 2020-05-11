@@ -27,13 +27,13 @@
             nodeArray[k] = data.Nodes[k].Index;
             names[k] = nodeArray[k] + " (" + data.Nodes[k].Position.X + ", " + data.Nodes[k].Position.Y + ", " + data.Nodes[k].Position.Z + ")";
             if (k == 0){
-                colorGroup[k] = 1;
+                colorGroup[k] = 100;
             }
             else if (k = data.Nodes.length-1){
-                colorGroup[k] = 2;
+                colorGroup[k] = 50;
             }
             else {
-                colorGroup[k] = 3;
+                colorGroup[k] = 22;
             }
         }
         for (var k in data.Edges){
@@ -46,9 +46,12 @@
         console.log(nodeArray);
         console.log(linkSources);
         console.log(linkDestinations);
+        const arrowNumber = new Array();
+        arrowNumber[0] = 0;
+        arrowNumber[1] = 10;
         const gData = {
             nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i]})),
-            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i]}))
+            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i%2]}))
 
         };
 
@@ -57,6 +60,8 @@
         (document.getElementById('3d-graph'))
             .graphData(gData)
             .nodeLabel('name')
+            .linkDirectionalParticles("value")
+            .linkDirectionalParticleSpeed(d => d.value * 0.001)
             .nodeAutoColorBy('group');
         Graph.postProcessingComposer().addPass(bloomPass);
 
