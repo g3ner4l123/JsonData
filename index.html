@@ -23,13 +23,15 @@
         const linkDestinations = new Array();
         const colorGroup = new Array();
         const names = new Array();
+        const startIndex = data.Start;
+        const endIndex = data.Finish;
         for (var k in data.Nodes){
             nodeArray[k] = data.Nodes[k].Index;
             names[k] = nodeArray[k] + " (" + data.Nodes[k].Position.X + ", " + data.Nodes[k].Position.Y + ", " + data.Nodes[k].Position.Z + ")";
-            if (k == 0){
+            if (startIndex.X ==data.Nodes[k].Position.X && startIndex.Y == data.Nodes[k].Position.Y && startIndex.Z == data.Nodes[k].Position.Z ){
                 colorGroup[k] = 100;
             }
-            else if (k = data.Nodes.length-1){
+            else if (endIndex.X ==data.Nodes[k].Position.X && endIndex.Y == data.Nodes[k].Position.Y && endIndex.Z == data.Nodes[k].Position.Z ){
                 colorGroup[k] = 50;
             }
             else {
@@ -41,17 +43,35 @@
             linkDestinations[k] = data.Edges[k].Destination;
         }
 
+        const solvPathStart = new Array();
+        for (var k in  data.SolvePath){
+            if (k < data.SolvePath.length-1) {
+                solvPathStart[k] = data.SolvePath[k];
+            }
+        }
 
 
-        console.log(nodeArray);
-        console.log(linkSources);
-        console.log(linkDestinations);
+        var solvPathEnd = new Array();
+        for (var k in  data.SolvePath){
+            if (k < data.SolvePath.length && k > 0) {
+                solvPathEnd[k-1]  = data.SolvePath[k];
+            }
+        }
+
         const arrowNumber = new Array();
-        arrowNumber[0] = 0;
-        arrowNumber[1] = 10;
+        for (var k in linkSources){
+            arrowNumber[k] = 0;
+            for (var n in solvPathStart){
+                if (linkSources[k] == solvPathEnd[n] && linkDestinations[k] == solvPathStart[n]){
+                    arrowNumber[k] = 10;
+                }
+            }
+
+        }
+        console.log(arrowNumber);
         const gData = {
             nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i]})),
-            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i%2]}))
+            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i]}))
 
         };
 
