@@ -70,7 +70,7 @@
         }
         console.log(arrowNumber);
         const gData = {
-            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i]})),
+            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i],'fx':data.Nodes[i].Position.X*100 ,'fy':data.Nodes[i].Position.Y*100 , 'fz':data.Nodes[i].Position.Z*100})),
             links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i]}))
 
         };
