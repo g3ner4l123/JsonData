@@ -1,0 +1,92 @@
+<head>
+    <style> body { margin: 0; } </style>
+    <script src="//unpkg.com/3d-force-graph"></script>
+</head>
+
+<body>
+<div id="3d-graph"></div>
+
+<script type="module">
+    const api_url = 'https://raw.githubusercontent.com/ob-algdatii-20ss/leistungsnachweis-adventure-time/develop/examples/firstCube.JSON?token=AKOYABH2DAE6PGAB33J2WVK6ZNYR4';
+    import { UnrealBloomPass } from '//unpkg.com/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+
+    const bloomPass = new UnrealBloomPass();
+    bloomPass.strength = 3;
+    bloomPass.radius = 1;
+    bloomPass.threshold = 0.1;
+
+    async function getISS() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        const nodeArray = new Array();
+        const linkSources = new Array();
+        const linkDestinations = new Array();
+        const colorGroup = new Array();
+        const names = new Array();
+        const startIndex = data.Start;
+        const endIndex = data.Finish;
+        for (var k in data.Nodes){
+            nodeArray[k] = data.Nodes[k].Index;
+            names[k] = nodeArray[k] + " (" + data.Nodes[k].Position.X + ", " + data.Nodes[k].Position.Y + ", " + data.Nodes[k].Position.Z + ")";
+            if (startIndex.X ==data.Nodes[k].Position.X && startIndex.Y == data.Nodes[k].Position.Y && startIndex.Z == data.Nodes[k].Position.Z ){
+                colorGroup[k] = 100;
+            }
+            else if (endIndex.X ==data.Nodes[k].Position.X && endIndex.Y == data.Nodes[k].Position.Y && endIndex.Z == data.Nodes[k].Position.Z ){
+                colorGroup[k] = 50;
+            }
+            else {
+                colorGroup[k] = 22;
+            }
+        }
+        for (var k in data.Edges){
+            linkSources[k] = data.Edges[k].Source;
+            linkDestinations[k] = data.Edges[k].Destination;
+        }
+
+        const solvPathStart = new Array();
+        for (var k in  data.SolvePath){
+            if (k < data.SolvePath.length-1) {
+                solvPathStart[k] = data.SolvePath[k];
+            }
+        }
+
+
+        var solvPathEnd = new Array();
+        for (var k in  data.SolvePath){
+            if (k < data.SolvePath.length && k > 0) {
+                solvPathEnd[k-1]  = data.SolvePath[k];
+            }
+        }
+
+        const arrowNumber = new Array();
+        for (var k in linkSources){
+            arrowNumber[k] = 0;
+            for (var n in solvPathStart){
+                if (linkSources[k] == solvPathEnd[n] && linkDestinations[k] == solvPathStart[n]){
+                    arrowNumber[k] = 10;
+                }
+            }
+
+        }
+        console.log(arrowNumber);
+        const gData = {
+            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i]})),
+            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i]}))
+
+        };
+
+
+        const Graph = ForceGraph3D()
+        (document.getElementById('3d-graph'))
+            .graphData(gData)
+            .nodeLabel('name')
+            .linkDirectionalParticles("value")
+            .linkDirectionalParticleSpeed(d => d.value * 0.001)
+            .nodeAutoColorBy('group');
+        Graph.postProcessingComposer().addPass(bloomPass);
+
+    }
+
+    getISS();
+</script>
+</body>
