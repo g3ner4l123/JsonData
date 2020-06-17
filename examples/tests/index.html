@@ -81,7 +81,7 @@
             nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i],'fx':data.Nodes[i].Position.X*100 ,'fy':data.Nodes[i].Position.Y*100 , 'fz':data.Nodes[i].Position.Z*100})),
             links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i]}))
         };
-
+        const distance = 1000;
         const Graph = ForceGraph3D()
         (document.getElementById('3d-graph'))
             .graphData(gData)
@@ -90,8 +90,10 @@
             .linkDirectionalParticleWidth(3)
             .linkDirectionalParticleColor(x => 'red')
             .linkDirectionalParticleSpeed(d => d.value * 0.001)
+            .cameraPosition({x:-200,y:300,z:-500},{x:200,y:200,z:200},0)
             .nodeAutoColorBy('group');
         Graph.postProcessingComposer().addPass(bloomPass);
+
     }
     getISS();
 </script>
