@@ -1,0 +1,100 @@
+<head>
+    <style> body { margin: 0; } </style>
+    <script src="//unpkg.com/3d-force-graph"></script>
+</head>
+<body>
+<div id="3d-graph"></div>
+<script type="module">
+    const api_url = 'https://raw.githubusercontent.com/ob-algdatii-20ss/leistungsnachweis-adventure-time/develop/examples/labyrinth-division.json?token=AKOYABH6WMGNIEHGREDQ4F266SY2G';
+    import { UnrealBloomPass } from '//unpkg.com/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+
+    // Creats a new UnrealBloomPass.
+    const bloomPass = new UnrealBloomPass();
+    bloomPass.strength = 3;
+    bloomPass.radius = 1;
+    bloomPass.threshold = 0.1;
+
+    // Main function
+    async function getISS() {
+        // API call
+        const response = await fetch(api_url);
+        // Json response of API call
+        const data = await response.json();
+        // Arrays with all Node data
+        const nodeArray = new Array();
+        const colorGroup = new Array();
+        const names = new Array();
+        // two Arrays for the Links
+        const linkSources = new Array();
+        const linkDestinations = new Array();
+        // Start and End index
+        const startIndex = data.Start;
+        const endIndex = data.Finish;
+        //
+        const solvPathStart = new Array();
+        var solvPathEnd = new Array();
+
+        // Colors the Nodes
+        for (var k in data.Nodes){
+            nodeArray[k] = data.Nodes[k].Index;
+            names[k] = nodeArray[k] + " (" + data.Nodes[k].Position.X + ", " + data.Nodes[k].Position.Y + ", " + data.Nodes[k].Position.Z + ")";
+            if (startIndex.X ==data.Nodes[k].Position.X && startIndex.Y == data.Nodes[k].Position.Y && startIndex.Z == data.Nodes[k].Position.Z ){
+                colorGroup[k] = 0;
+            }
+            else if (endIndex.X ==data.Nodes[k].Position.X && endIndex.Y == data.Nodes[k].Position.Y && endIndex.Z == data.Nodes[k].Position.Z ){
+                colorGroup[k] = 1;
+            }
+            else {
+                colorGroup[k] = 2;
+            }
+        }
+
+        // Parses the Source and Destinations of all Links
+        for (var k in data.Edges) {
+            linkSources[k] = data.Edges[k].Source;
+            linkDestinations[k] = data.Edges[k].Destination;
+        }
+
+        for (var k in  data.SolvePath){
+            if (k < data.SolvePath.length-1) {
+                solvPathStart[k] = data.SolvePath[k];
+            }
+            if (k < data.SolvePath.length && k > 0) {
+                solvPathEnd[k-1]  = data.SolvePath[k];
+            }
+        }
+
+
+        const arrowNumber = new Array();
+        for (var k in linkSources){
+            arrowNumber[k] = 0;
+            for (var n in solvPathStart){
+                if (linkSources[k] == solvPathEnd[n] && linkDestinations[k] == solvPathStart[n]){
+                    arrowNumber[k] = 10;
+                }
+            }
+        }
+
+        /* Builds the required Array of nodes and links that is used fpr the ForceGraph
+         */
+        const gData = {
+            nodes: [...nodeArray.keys()].map(i => ({id: nodeArray[i], 'group':colorGroup[i], 'name': names[i],'fx':data.Nodes[i].Position.X*100 ,'fy':data.Nodes[i].Position.Y*100 , 'fz':data.Nodes[i].Position.Z*100})),
+            links: [...linkSources.keys()].map(i =>({"source": linkSources[i],"target": linkDestinations[i],"value": arrowNumber[i]}))
+        };
+        const distance = 1000;
+        const Graph = ForceGraph3D()
+        (document.getElementById('3d-graph'))
+            .graphData(gData)
+            .nodeLabel('name')
+            .linkDirectionalParticles("value")
+            .linkDirectionalParticleWidth(3)
+            .linkDirectionalParticleColor(x => 'red')
+            .linkDirectionalParticleSpeed(d => d.value * 0.001)
+            //.cameraPosition({x:-200,y:300,z:-500},{x:200,y:200,z:200},0)
+            .nodeAutoColorBy('group');
+        Graph.postProcessingComposer().addPass(bloomPass);
+
+    }
+    getISS();
+</script>
+</body>
